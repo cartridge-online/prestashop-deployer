@@ -4,8 +4,6 @@ services:
   prestashop:
     build:
       context: .  # Directory where the Dockerfile is located
-    ports:
-      - "8080:80"
     volumes:
       - prestashop_data:/var/www/html/  # Persist PrestaShop data in a subdirectory
     environment:
