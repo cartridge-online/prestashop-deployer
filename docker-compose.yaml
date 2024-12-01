@@ -14,6 +14,8 @@ services:
       DB_USER= root
       DB_PASSWD= prestashop
       DB_NAME= prestashop
+    networks:
+      - coolify
 
   db:
     image: mysql:5.7
@@ -26,6 +28,7 @@ services:
   
 networks:
     coolify:
+        name: coolify
         driver: bridge
         external: false
 volumes:
