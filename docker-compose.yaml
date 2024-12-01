@@ -8,19 +8,19 @@ services:
     volumes:
       - prestashop_data:/var/www/html/  # Persist PrestaShop data in a subdirectory
     environment:
-      PS_DEV_MODE: 1
-      PS_INSTALL_AUTO: 0 
-      DB_SERVER: db
-      DB_USER: root
-      DB_PASSWD: prestashop
-      DB_NAME: prestashop
+      PS_DEV_MODE= 1
+      PS_INSTALL_AUTO= 0 
+      DB_SERVER= db
+      DB_USER= root
+      DB_PASSWD= prestashop
+      DB_NAME= prestashop
 
   db:
     image: mysql:5.7
     container_name: mysql_db
     environment:
-      MYSQL_ROOT_PASSWORD: prestashop
-      MYSQL_DATABASE: prestashop
+      MYSQL_ROOT_PASSWORD= prestashop
+      MYSQL_DATABASE= prestashop
     volumes:
       - db_data:/var/lib/mysql
   
