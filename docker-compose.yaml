@@ -28,7 +28,7 @@ services:
   
 networks:
   existing_network:
-    external: true
+    external: false
     
 volumes:
   prestashop_data:
