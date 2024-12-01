@@ -1,20 +1,26 @@
-# Use PrestaShop 8.2 as the base image
+# Use the official PrestaShop image as the base image
 FROM prestashop/prestashop:8.2.0
 
-# Set working directory to /var/www/html
-WORKDIR /var/www/html
+# Set environment variables for non-interactive installation
+ENV DEBIAN_FRONTEND=noninteractive
 
-# Ensure necessary packages are installed (optional)
-RUN apt install git
+# Install Git using apt
+RUN apt update && apt install -y git && apt clean
 
-# Copy the 'deployer' folder from /var/www to /var/www/html
-COPY ./deployer /var/www/html/deployer/
+# Set Git default branch to 'main' and mark /var/www/html as a safe directory
+RUN git config --global init.defaultBranch main && \
+    git config --global --add safe.directory /var/www/html
 
-# Set permissions for PrestaShop files and deployer folder
-RUN chown -R www-data:www-data /var/www/html
+# Copy local file(s) to /var/www/html
+# Replace 'your-local-file' with the actual file name you want to copy
+COPY ./deployer /var/www/html/
 
-# Expose port 80 for the web server
+# Set proper permissions for the copied file(s)
+RUN chown -R www-data:www-data /var/www/html && \
+    chmod -R 755 /var/www/html
+
+# Expose the default PrestaShop port
 EXPOSE 80
 
-# Set the default command to start Apache
-CMD ["apache2-foreground"]
+# Start the PrestaShop entrypoint script
+CMD ["docker-php-entrypoint"]
