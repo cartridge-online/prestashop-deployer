@@ -128,7 +128,7 @@ if (isAuthenticated() && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['
             "git init",
             "git remote add origin https://" . GITHUB_TOKEN . "@github.com/{$repo}.git",
             "git fetch origin",
-            "git checkout -b {$branch} origin/{$branch}",
+			"git reset --hard origin/{$branch}",
         ];
     } else {
         // Update existing repository
