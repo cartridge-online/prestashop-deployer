@@ -12,8 +12,6 @@ services:
       DB_USER: root
       DB_PASSWD: prestashop
       DB_NAME: prestashop
-    ports:
-        - "80:80"
 
   db:
     image: mysql:5.7
