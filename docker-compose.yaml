@@ -15,7 +15,7 @@ services:
       DB_PASSWD= prestashop
       DB_NAME= prestashop
     networks:
-      - existing_network
+      - coolify
 
   db:
     image: mysql:5.7
@@ -27,9 +27,10 @@ services:
       - db_data:/var/lib/mysql
   
 networks:
-  existing_network:
-    external: false
-    
+    coolify:
+        name: coolify
+        driver: bridge
+        external: true
 volumes:
   prestashop_data:
   db_data:
