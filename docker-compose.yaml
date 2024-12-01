@@ -25,12 +25,7 @@ services:
       MYSQL_PASSWORD=prestashop
     volumes:
       - db_data:/var/lib/mysql
-  
-networks:
-    coolify:
-        name: coolify
-        driver: bridge
-        external: false
+      
 volumes:
   prestashop_data:
   db_data:
