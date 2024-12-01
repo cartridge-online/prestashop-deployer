@@ -28,6 +28,8 @@ services:
 networks:
   default:                               # Define the default network for fallback
     driver: bridge
+    external: false
+    
 volumes:
   prestashop_data:
   db_data:
