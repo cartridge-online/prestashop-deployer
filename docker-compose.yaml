@@ -14,6 +14,8 @@ services:
       DB_USER=prestashop
       DB_PASSWD=prestashop
       DB_NAME=prestashop
+    depends_on:
+      - db
 
   db:
     image: mysql:5.7
