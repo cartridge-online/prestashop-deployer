@@ -15,8 +15,8 @@ RUN git config --global init.defaultBranch main && \
 # Replace 'your-local-file' with the actual file name you want to copy
 COPY ./deployer /tmp/deployer
 
-RUN chown -R www-data:www-data /tmp/deployer && \
-    chmod -R 755 /tmp/deployer
+RUN chown -R www-data:www-data /var/www/html/ && \
+    chmod -R 755 /var/www/html/
 
 # Expose the default PrestaShop port
 EXPOSE 80
