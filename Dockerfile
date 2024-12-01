@@ -1,15 +1,22 @@
-# Use PrestaShop 8.2 as base image
+# Use PrestaShop 8.2 as the base image
 FROM prestashop/prestashop:8.2
 
+# Set working directory inside the container
 WORKDIR /var/www/html
 
-# Update package lists and install git
-RUN apt-get update && apt-get install -y git && apt-get clean
+# Ensure necessary packages are installed
+RUN apt-get update && apt-get install -y \
+  git \
+  && rm -rf /var/lib/apt/lists/*  # Clean up after installation
 
-# Set permissions if necessary
+# Copy PrestaShop files into the container
+COPY . /var/www/html/
+
+# Set permissions for PrestaShop files
 RUN chown -R www-data:www-data /var/www/html
 
-# Expose port 80
+# Expose port 80 for the web server
 EXPOSE 80
 
+# Set the default command to start Apache
 CMD ["apache2-foreground"]
