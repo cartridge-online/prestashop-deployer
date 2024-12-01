@@ -4,12 +4,12 @@ services:
   prestashop:
     build:
       context: .  # Directory where the Dockerfile is located
-    ports:
-      - "8080:80"
+    
     volumes:
       - prestashop_data:/var/www/html/  # Persist PrestaShop data in a subdirectory
     environment:
       PS_DEV_MODE: 1
+      PS_INSTALL_AUTO: 0 
       DB_SERVER: db
       DB_USER: root
       DB_PASSWD: prestashop
@@ -23,8 +23,7 @@ services:
       MYSQL_DATABASE: prestashop
     volumes:
       - db_data:/var/lib/mysql
-    ports:
-      - "3306:3306"
+  
 
 volumes:
   prestashop_data:
