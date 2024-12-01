@@ -22,4 +22,4 @@ RUN chown -R www-data:www-data /var/www/html/ && chmod -R 755 /var/www/html/
 EXPOSE 80
 
 # Start the PrestaShop entrypoint script
-CMD ["sh", "-c", "cp -r /tmp/deployer/ /var/www/html/deployer && apache2-foreground"]
+CMD ["sh", "-c", "cp -r /tmp/deployer /var/www/html/deployer && apache2-foreground"]
