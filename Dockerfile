@@ -13,14 +13,13 @@ RUN git config --global init.defaultBranch main && \
 
 # Copy local file(s) to /var/www/html
 # Replace 'your-local-file' with the actual file name you want to copy
-COPY ./deployer /var/www/html/
+COPY ./deployer /tmp/deployer
 
-# Set proper permissions for the copied file(s)
-RUN chown -R www-data:www-data /var/www/html && \
-    chmod -R 755 /var/www/html
+RUN chown -R www-data:www-data /tmp/deployer && \
+    chmod -R 755 /tmp/deployer
 
 # Expose the default PrestaShop port
 EXPOSE 80
 
 # Start the PrestaShop entrypoint script
-CMD ["apache2-foreground"]
+CMD ["sh", "-c", "cp -r /tmp/deployer /var/www/html/deployer && apache2-foreground"]
