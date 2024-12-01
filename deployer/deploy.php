@@ -110,7 +110,7 @@ if (isset($_GET['logout'])) {
 if (isAuthenticated() && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deploy'])) {
     $repo = $_POST['repo'];
     $branch = $_POST['branch'];
-    $target_path = 'var/www/html';
+    $target_path = '/var/www/html';
 
     logAction('Deployment initiated', "Repository: $repo, Branch: $branch");
     // Store deployment info in session
@@ -151,7 +151,7 @@ if (isAuthenticated() && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['
 // Handle push to GitHub
 if (isAuthenticated() && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['push'])) {
     $commit_message = $_POST['commit_message'];
-    $target_path = 'var/www/html';
+    $target_path = '/var/www/html';
 
     logAction('Push initiated', "Checking git status");
 
