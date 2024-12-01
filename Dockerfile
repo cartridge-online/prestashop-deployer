@@ -12,6 +12,9 @@ RUN apt-get update && apt-get install -y \
 # Copy PrestaShop files into the container
 COPY . /var/www/html/
 
+# Copy 'deployer' folder into the container (instead of using volumes)
+COPY ./deployer /var/www/html/deployer/
+
 # Set permissions for PrestaShop files
 RUN chown -R www-data:www-data /var/www/html
 
