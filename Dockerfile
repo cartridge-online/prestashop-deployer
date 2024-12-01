@@ -23,4 +23,4 @@ RUN chown -R www-data:www-data /var/www/html && \
 EXPOSE 80
 
 # Start the PrestaShop entrypoint script
-CMD ["docker-php-entrypoint"]
+CMD ["apache2-foreground"]
