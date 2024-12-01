@@ -1,18 +1,21 @@
 # Use PrestaShop 8.2 as the base image
 FROM prestashop/prestashop:8.2
 
-# Set working directory inside the container
+# Set working directory to /var/www/html
 WORKDIR /var/www/html
 
-# Install necessary packages (git, etc.)
+# Ensure necessary packages are installed (optional)
 RUN apt-get update && apt-get install -y \
   git \
   && rm -rf /var/lib/apt/lists/*  # Clean up after installation
 
-# Copy PrestaShop files into the container
+# Copy PrestaShop files into the container at /var/www/html
 COPY . /var/www/html/
 
-# Set permissions for PrestaShop files
+# Copy the 'deployer' folder from /var/www to /var/www/html
+COPY ./deployer /var/www/html/deployer/
+
+# Set permissions for PrestaShop files and deployer folder
 RUN chown -R www-data:www-data /var/www/html
 
 # Expose port 80 for the web server
