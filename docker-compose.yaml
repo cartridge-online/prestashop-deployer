@@ -7,8 +7,8 @@ services:
     ports:
       - "8080:80"  # Map port 8080 on the host to port 80 in the container
     volumes:
-      - prestashop_data:/var/www/html  # Mount entire directory to avoid conflict
-      - ./deployer:/var/www/html/deployer  # Mount 'deployer' folder from host to container
+      - prestashop_data:/var/www/html  # Place PrestaShop files inside /var/www/html/
+      - ./deployer:/var/www/html/deployer  # Mount 'deployer' folder into /var/www/html/deployer
     environment:
       PS_DEV_MODE: 1           # Enable PrestaShop development mode
       DB_SERVER: db            # Database service name
