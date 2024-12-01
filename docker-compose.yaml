@@ -30,7 +30,7 @@ networks:
     coolify:
         name: coolify
         driver: bridge
-        external: true
+        external: false
 volumes:
   prestashop_data:
   db_data:
