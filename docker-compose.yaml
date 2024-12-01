@@ -14,7 +14,8 @@ services:
       DB_USER= root
       DB_PASSWD= prestashop
       DB_NAME= prestashop
-
+    networks:
+      - existing_network
 
   db:
     image: mysql:5.7
@@ -26,9 +27,8 @@ services:
       - db_data:/var/lib/mysql
   
 networks:
-  default:                               # Define the default network for fallback
-    driver: bridge
-    external: false
+  existing_network:
+    external: true
     
 volumes:
   prestashop_data:
