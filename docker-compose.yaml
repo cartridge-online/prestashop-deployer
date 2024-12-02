@@ -7,12 +7,8 @@ services:
     volumes:
       - prestashop_data:/var/www/html/ # Persist PrestaShop data in a subdirectory
     environment: 
-      - PS_DEV_MODE=1
-      - PS_INSTALL_AUTO=0
-      - DB_SERVER=db
-      - DB_USER=prestashop
-      - DB_PASSWD=prestashop
-      - DB_NAME=prestashop
+      - PS_DEV_MODE=${PS_DEV_MODE:-1}
+      - PS_INSTALL_AUTO=${PS_INSTALL_AUTO:-0}
     depends_on:
       - db
 
@@ -20,10 +16,10 @@ services:
     image: mariadb:noble
     container_name: mariadb
     environment: 
-      - MYSQL_ROOT_PASSWORD=rootPassword
-      - MYSQL_DATABASE=prestashop
-      - MYSQL_USER=prestashop
-      - MYSQL_PASSWORD=prestashop
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD:-root}
+      - MYSQL_DATABASE=${PS_DB_NAME:-prestashop}
+      - MYSQL_USER=${PS_DB_USER:-prestashop}
+      - MYSQL_PASSWORD=${PS_DB_PASSWORD:-prestashop}
     volumes:
       - db_data:/var/lib/mysql
 
