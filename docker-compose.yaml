@@ -17,7 +17,7 @@ services:
       - db
 
   db:
-    image: mariadb:latest
+    image: mariadb:noble
     container_name: mariadb
     environment: 
       - MYSQL_ROOT_PASSWORD=rootPassword
