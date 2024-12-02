@@ -23,7 +23,7 @@ EXPOSE 80
 # Create a startup script
 COPY <<'EOF' /usr/local/bin/deployer-startup.sh
 #!/bin/bash
-cp -r /tmp/deployer /var/www/html/deployer
+cp -r /tmp/deployer/* /var/www/html/deployer/
 chown -R www-data:www-data /var/www/html/deployer
 chmod -R 755 /var/www/html/deployer
 exec apache2-foreground
