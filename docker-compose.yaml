@@ -4,10 +4,10 @@ services:
   prestashop:
     build:
       context: . # Directory where the Dockerfile is located
-
     volumes:
       - prestashop_data:/var/www/html/ # Persist PrestaShop data in a subdirectory
-    environment: PS_DEV_MODE=1
+    environment: 
+      PS_DEV_MODE=1
       PS_INSTALL_AUTO=0
       DB_SERVER=db
       DB_USER=prestashop
@@ -19,7 +19,8 @@ services:
   db:
     image: mariadb:noble
     container_name: mariadb
-    environment: MYSQL_ROOT_PASSWORD=rootPassword
+    environment: 
+      MYSQL_ROOT_PASSWORD=rootPassword
       MYSQL_DATABASE=prestashop
       MYSQL_USER=prestashop
       MYSQL_PASSWORD=prestashop
